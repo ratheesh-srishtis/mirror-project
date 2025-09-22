@@ -4,16 +4,11 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // Redirect all requests to index.html while preserving the path
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      var redirectUrl =
-        "/" +
-        "index.html" +
-        "?redirect=" +
-        encodeURIComponent(path + search + hash);
-      window.location.replace(redirectUrl);
+      // Redirect to index.html while preserving path
+      var redirect = window.location.pathname.replace("/mirror-project", "");
+      window.location.replace(
+        "/mirror-project/index.html?redirect=" + encodeURIComponent(redirect)
+      );
     </script>
   </head>
   <body></body>

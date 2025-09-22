@@ -1,9 +1,10 @@
 import React from "react";
 import "../Css/Layout/footer.css";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
   const Logo = require("../assets/images/mirrorLogo.png");
-
+  const navigate = useNavigate();
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -17,10 +18,24 @@ function Footer() {
             <h4>Company</h4>
             <ul>
               <li>
-                <a href="/about">About</a>
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/");
+                  }}
+                >
+                  Home
+                </a>
               </li>
               <li>
-                <a href="/home">Home</a>
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/about");
+                  }}
+                >
+                  about
+                </a>
               </li>
             </ul>
           </div>
@@ -28,16 +43,33 @@ function Footer() {
             <h4>Support</h4>
             <ul>
               <li>
-                <a href="/contact">Contact</a>
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/contact");
+                  }}
+                >
+                  Contact
+                </a>
               </li>
               <li>
-                <a href="/faq">FAQ</a>
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/faq");
+                  }}
+                >
+                  FAQ
+                </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="footer__copyright-section">
-          <p>&copy; {new Date().getFullYear()} My App. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} My App. All rights reserved.{" "}
+            <span>Version : 0.01</span>
+          </p>
         </div>
       </div>
     </footer>

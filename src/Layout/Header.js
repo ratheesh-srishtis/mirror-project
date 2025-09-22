@@ -24,7 +24,6 @@ const Header = () => {
           <ul>
             <li>
               <a
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/");
@@ -35,7 +34,6 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/voices");
@@ -46,7 +44,6 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/join-us");
@@ -57,7 +54,6 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/about");
@@ -68,7 +64,6 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/credits");
