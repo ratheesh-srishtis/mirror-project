@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mirror-project/static/css/main.9d908e6d.css",
-    "main.js": "/mirror-project/static/js/main.833fb7f8.js",
+    "main.css": "/mirror-project/static/css/main.da9a6ad3.css",
+    "main.js": "/mirror-project/static/js/main.ae57d5bf.js",
     "static/js/453.96453769.chunk.js": "/mirror-project/static/js/453.96453769.chunk.js",
     "static/media/mirrorLogo.png": "/mirror-project/static/media/mirrorLogo.7032e1f7d094a5aaaf1c.png",
     "index.html": "/mirror-project/index.html",
-    "main.9d908e6d.css.map": "/mirror-project/static/css/main.9d908e6d.css.map",
-    "main.833fb7f8.js.map": "/mirror-project/static/js/main.833fb7f8.js.map",
+    "main.da9a6ad3.css.map": "/mirror-project/static/css/main.da9a6ad3.css.map",
+    "main.ae57d5bf.js.map": "/mirror-project/static/js/main.ae57d5bf.js.map",
     "453.96453769.chunk.js.map": "/mirror-project/static/js/453.96453769.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d908e6d.css",
-    "static/js/main.833fb7f8.js"
+    "static/css/main.da9a6ad3.css",
+    "static/js/main.ae57d5bf.js"
   ]
 }
