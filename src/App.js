@@ -11,7 +11,7 @@ import AddVoices from "./admin/Components/AddVoices";
 import AddBlogs from "./admin/Components/AddBlogs";
 function App() {
   return (
-    <Router>
+    <Router basename="/mirror-project">
       <Header />
       <main>
         <Routes>
