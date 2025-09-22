@@ -1,0 +1,87 @@
+.addvoices-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.addvoices-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  padding: 0.7rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f7f7f7;
+  transition: border-color 0.2s;
+}
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.form-file-input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f7f7f7;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form-save-btn {
+  padding: 0.9rem 0;
+  background: linear-gradient(90deg, #3498db 60%, #6dd5fa 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+.form-save-btn:hover {
+  background: linear-gradient(90deg, #217dbb 60%, #43c6e7 100%);
+  transform: translateY(-2px) scale(1.02);
+}
+
+@media (max-width: 600px) {
+  .addvoices-container {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .form-title {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,120 @@
+/* Flex row for two fields side by side */
+.joinus__fields-row {
+  display: flex;
+  gap: 16px;
+}
+.joinus__fields-row .joinus__field {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .joinus__fields-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+/* Modern Join Us Form Styles */
+.joinus__wrapper {
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f2f1ed 0%, #f2f1ed 100%);
+  padding: 30px 10px;
+}
+
+.joinus__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.joinus__logo img {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.joinus__form {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 32px 24px;
+  width: 50vw;
+  min-width: 320px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.joinus__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: #232526;
+}
+.joinus__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.joinus__field label {
+  font-size: 1rem;
+  color: #414345;
+  font-weight: 500;
+}
+.joinus__field input,
+.joinus__field textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+.joinus__field input:focus,
+.joinus__field textarea:focus {
+  border: 1.5px solid #232526;
+  outline: none;
+}
+.joinus__btn {
+  background: #f2ebcc;
+  color: #000000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
+}
+
+@media (max-width: 900px) {
+  .joinus__form {
+    width: 90vw;
+    max-width: 98vw;
+    min-width: unset;
+    padding: 18px 8px;
+  }
+}
+@media (max-width: 600px) {
+  .joinus__form {
+    width: 98vw;
+    max-width: 98vw;
+    min-width: unset;
+    padding: 12px 4px;
+  }
+  .joinus__logo img {
+    width: 56px;
+    height: 56px;
+  }
+  .joinus__title {
+    font-size: 1.5rem;
+  }
+}

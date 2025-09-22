@@ -1,0 +1,111 @@
+/* Modern Responsive Footer Styles */
+/* Sticky footer layout for full viewport height */
+body,
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  background: linear-gradient(90deg, #cde5d9 0%, #c6e2e7 100%);
+  color: #000000;
+  padding: 40px 0 20px 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin-top: auto;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.footer__logo-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer__logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+}
+
+.footer__company-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.footer__menu-section {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer__menu {
+  min-width: 120px;
+}
+.footer__menu h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.footer__menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer__menu li {
+  margin-bottom: 8px;
+}
+.footer__menu a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__menu a:hover {
+  color: #ffd700;
+}
+
+.footer__copyright-section {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+  .footer__menu-section {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .footer__logo-section {
+    margin-bottom: 10px;
+  }
+  .footer__copyright-section {
+    margin-top: 20px;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
