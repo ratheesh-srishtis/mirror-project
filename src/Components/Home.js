@@ -1,67 +1,75 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaVideo } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "../Css/components/home.css";
 
 function Home() {
-  const countries = [
+  const navigate = useNavigate();
+
+  const continents = [
+    {
+      name: "Asia",
+      theme: "asia",
+      tag: "Explore",
+      urlSlug: "asia-videos",
+    },
     {
       name: "Africa",
-      flag: "https://flagcdn.com/w320/za.png", // Example (South Africa)
+      theme: "africa",
+      tag: "Explore",
+      urlSlug: "africa-videos",
     },
     {
-      name: "Argentina",
-      flag: "https://flagcdn.com/w320/ar.png",
+      name: "North America",
+      theme: "north-america",
+      tag: "Explore",
+      urlSlug: "north-america-videos",
     },
     {
-      name: "Bolivia",
-      flag: "https://flagcdn.com/w320/bo.png",
+      name: "South America",
+      theme: "south-america",
+      tag: "Explore",
+      urlSlug: "south-america-videos",
     },
     {
-      name: "China",
-      flag: "https://flagcdn.com/w320/cn.png",
+      name: "Europe",
+      theme: "europe",
+      tag: "Explore",
+      urlSlug: "europe-videos",
     },
     {
-      name: "Nigeria",
-      flag: "https://flagcdn.com/w320/ng.png",
-    },
-    {
-      name: "Philippines",
-      flag: "https://flagcdn.com/w320/ph.png",
+      name: "Australia",
+      theme: "australia",
+      tag: "Explore",
+      urlSlug: "australia-videos",
     },
   ];
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleContinentClick = (continent) => {
+    const selectedContinent = continents.find((c) => c.name === continent);
+    if (selectedContinent) {
+      navigate(`/videos/${selectedContinent.urlSlug}`);
+    }
+  };
+
   return (
     <div className="home-container">
-      {/* 🔍 Search bar */}
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search country..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-      </div>
-      <div className="card-grid">
-        {filteredCountries.map((country, index) => (
-          <div key={index} className="country-card">
-            <img src={country.flag} alt={country.name} className="flag-img" />
-            <div className="card-content">
-              <h2>{country.name}</h2>
-              <Link
-                to={`/${country.name.toLowerCase()}-videos`}
-                className="video-link"
-              >
-                <FaVideo /> Watch Videos
-              </Link>
+      <div className="continents-section">
+        <h2 className="section-title">Choose Your Destination</h2>
+        <div className="continents-grid">
+          {continents.map((continent, index) => (
+            <div key={index} className={`continent-circle ${continent.theme}`}>
+              <div className="circle-content">
+                <h3 className="continent-name">{continent.name}</h3>
+                <button
+                  className="continent-tag"
+                  onClick={() => handleContinentClick(continent.name)}
+                >
+                  {continent.tag}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

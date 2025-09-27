@@ -25,6 +25,12 @@
   padding: 0.75rem 1.5rem;
 }
 
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .header__logo span {
   font-size: 1.5rem;
   font-weight: bold;
@@ -89,7 +95,8 @@
   .header__nav ul {
     flex-direction: column;
     gap: 1.5rem;
-    background: var(--primary);
+    /* background: var(--primary); */
+    background: linear-gradient(90deg, #cde5d9 0%, #c6e2e7 100%);
     position: absolute;
     top: 60px;
     right: 0;
@@ -108,8 +115,9 @@
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 a {

@@ -19,6 +19,7 @@ const Header = () => {
           <span>
             <img className="logo" src={Logo}></img>
           </span>
+          <span className="footer__company-name">Mirror Project</span>
         </div>
         <nav className={`header__nav ${menuOpen ? "open" : ""}`}>
           <ul>
@@ -36,10 +37,10 @@ const Header = () => {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/voices");
+                  navigate("/videos");
                 }}
               >
-                Voices
+                Videos
               </a>
             </li>
             <li>
@@ -66,10 +67,10 @@ const Header = () => {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/credits");
+                  navigate("/blogs");
                 }}
               >
-                Credits
+                Blogs
               </a>
             </li>
           </ul>
