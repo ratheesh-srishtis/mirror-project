@@ -165,7 +165,8 @@ function Videos() {
       } else if (window.innerWidth <= 1024) {
         setVideosPerSlide(4);
       } else {
-        setVideosPerSlide(5);
+        // Desktop - vertical layout with fewer videos visible
+        setVideosPerSlide(3);
       }
     };
 
@@ -285,7 +286,8 @@ function Videos() {
                     disabled={!canScrollPrev}
                     aria-label="Previous videos"
                   >
-                    &#8249;
+                    <span className="arrow-desktop">&#8593;</span>
+                    <span className="arrow-mobile">&#8249;</span>
                   </button>
                   <button
                     className={`carousel-btn carousel-btn-next ${
@@ -295,7 +297,8 @@ function Videos() {
                     disabled={!canScrollNext}
                     aria-label="Next videos"
                   >
-                    &#8250;
+                    <span className="arrow-desktop">&#8595;</span>
+                    <span className="arrow-mobile">&#8250;</span>
                   </button>
                 </div>
               </div>

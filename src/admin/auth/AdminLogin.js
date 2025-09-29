@@ -12,18 +12,19 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+    navigate("/admin/dashboard"); // Redirect to admin dashboard
+    // e.preventDefault();
+    // setError("");
 
-    try {
-      const response = await api.post("/auth/login", { username, password });
-      const { token } = response.data;
+    // try {
+    //   const response = await api.post("/auth/login", { username, password });
+    //   const { token } = response.data;
 
-      localStorage.setItem("token", token); // Save token
-      navigate("/add-voices"); // Redirect to admin area
-    } catch (err) {
-      setError("Invalid username or password");
-    }
+    //   localStorage.setItem("adminToken", token); // Save admin token
+    //   navigate("/admin/dashboard"); // Redirect to admin dashboard
+    // } catch (err) {
+    //   setError("Invalid username or password");
+    // }
   };
 
   return (

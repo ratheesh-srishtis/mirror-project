@@ -1,25 +1,47 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Css/Layout/header.css";
-const Header = () => {
-  const Logo = require("../assets/images/mirrorLogo.png");
+import "../../Css/Layout/header.css";
+import devConfig from "../../config/devConfig";
 
+const AdminHeader = () => {
+  const Logo = require("../../assets/images/mirrorLogo.png");
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Check if we're in development mode
+  const isDevMode = devConfig.isDevMode();
+
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin-login");
   };
 
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__logo">
-          {/* Replace with your logo if needed */}
           <span>
-            <img className="logo" src={Logo}></img>
+            <img className="logo" src={Logo} alt="Mirror Project Logo" />
           </span>
-          <span className="footer__company-name">Mirror Project</span>
+          <span className="footer__company-name">
+            Mirror Project - Admin
+            {isDevMode && (
+              <span
+                style={{
+                  color: "#ff6b35",
+                  fontSize: "0.8em",
+                  marginLeft: "8px",
+                  fontWeight: "bold",
+                }}
+              >
+                [DEV MODE]
+              </span>
+            )}
+          </span>
         </div>
         <nav className={`header__nav ${menuOpen ? "open" : ""}`}>
           <ul>
@@ -27,50 +49,51 @@ const Header = () => {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/");
+                  navigate("/admin/dashboard");
                 }}
               >
-                Home
+                Dashboard
               </a>
             </li>
             <li>
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/videos");
+                  navigate("/admin/add-voices");
                 }}
               >
-                Videos
+                Add Voices
               </a>
             </li>
             <li>
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/join-us");
+                  navigate("/admin/add-blogs");
                 }}
               >
-                Share With Us
+                Add Blogs
               </a>
             </li>
-            {/* <li>
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/about");
-                }}
-              >
-                About Us
-              </a>
-            </li> */}
             <li>
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/blogs");
+                  navigate("/admin/manage-content");
                 }}
               >
-                Blogs
+                Manage Content
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLogout();
+                }}
+                style={{ color: "#ff4444" }}
+              >
+                Logout
               </a>
             </li>
           </ul>
@@ -89,4 +112,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;
