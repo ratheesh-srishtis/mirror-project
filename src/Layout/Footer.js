@@ -7,9 +7,9 @@ function Footer() {
 
   const handleSocialClick = (platform) => {
     const socialUrls = {
-      youtube: "https://www.youtube.com",
-      instagram: "https://www.instagram.com",
-      tiktok: "https://www.tiktok.com",
+      youtube: "https://www.youtube.com/@Mirror_Project",
+      instagram: "https://www.instagram.com/joinmirrorproject/",
+      tiktok: "https://www.tiktok.com/@ourmirrorproject",
     };
     window.open(socialUrls[platform], "_blank", "noopener,noreferrer");
   };
@@ -108,7 +108,7 @@ function Footer() {
         <div className="footer__copyright-section">
           <p>
             &copy; {new Date().getFullYear()} Mirror Project. All rights
-            reserved. <span className="footer__version">Version : 0.02</span>
+            reserved. <span className="footer__version">Version : 0.03</span>
           </p>
         </div>
       </div>

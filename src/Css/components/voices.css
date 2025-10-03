@@ -1,4 +1,4 @@
-.voices-gallery {
+/* .voices-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
@@ -91,4 +91,4 @@
   .video-info {
     padding: 1rem 0.7rem 0.7rem 0.7rem;
   }
-}
+} */

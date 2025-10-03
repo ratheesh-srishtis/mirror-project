@@ -14,7 +14,7 @@
 }
 
 .videos-header h1 {
-  font-size: 26px;
+  font-size: 22px;
   color: #2c3e50;
   margin-bottom: 15px;
   font-weight: 700;
@@ -88,21 +88,34 @@
   line-height: 1.3;
 }
 
+.main-video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 .main-video-description {
   font-size: 1.1rem;
   color: #5a6c7d;
-  margin: 0 0 15px 0;
+  margin: 0;
   line-height: 1.6;
+  flex: 1;
 }
 
 .main-video-date {
   display: inline-block;
-  font-size: 0.95rem;
-  color: #95a5a6;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 6px 12px;
-  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 6px;
   font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Video Carousel Section */
@@ -178,7 +191,15 @@
   overflow: hidden;
   border-radius: 16px;
   max-height: 450px;
-  overflow-y: auto;
+  overflow-y: hidden;
+  /* Hide scrollbars */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for webkit browsers */
+.carousel-container::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-track {
@@ -430,7 +451,7 @@
 /* Tablet */
 @media (max-width: 768px) {
   .videos-header {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 
   .videos-header h1 {
@@ -445,6 +466,7 @@
   .video-player-gallery {
     padding: 20px;
     flex-direction: column;
+    gap: 15px;
   }
 
   .main-video-section {
@@ -497,6 +519,11 @@
     font-size: 1rem;
   }
 
+  .main-video-date {
+    font-size: 0.8rem;
+    padding: 4px 7px;
+  }
+
   .carousel-header {
     flex-direction: column;
     gap: 15px;
@@ -534,7 +561,7 @@
   }
 
   .videos-header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .videos-header h1 {
@@ -547,6 +574,7 @@
     flex-direction: column;
     width: 100%;
     max-width: none;
+    gap: 0px;
   }
 
   .main-video-section {
@@ -612,6 +640,11 @@
 
   .main-video-description {
     font-size: 0.95rem;
+  }
+
+  .main-video-date {
+    font-size: 0.75rem;
+    padding: 3px 6px;
   }
 
   .carousel-video-title {
@@ -689,6 +722,11 @@
   .main-video-title {
     font-size: 1.2rem;
   }
+
+  .main-video-date {
+    font-size: 0.7rem;
+    padding: 2px 5px;
+  }
 }
 
 /* Dark mode support */
@@ -718,8 +756,10 @@
   }
 
   .main-video-date {
-    background: rgba(0, 0, 0, 0.3);
-    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   .carousel-header h3 {

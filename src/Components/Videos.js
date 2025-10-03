@@ -263,12 +263,14 @@ function Videos() {
               <h2 className="main-video-title">
                 {currentVideos[currentVideoIndex]?.title}
               </h2>
-              <p className="main-video-description">
-                {currentVideos[currentVideoIndex]?.description}
-              </p>
-              <span className="main-video-date">
-                {currentVideos[currentVideoIndex]?.postedDate}
-              </span>
+              <div className="main-video-meta">
+                <p className="main-video-description">
+                  {currentVideos[currentVideoIndex]?.description}
+                </p>
+                <span className="main-video-date">
+                  {currentVideos[currentVideoIndex]?.postedDate}
+                </span>
+              </div>
             </div>
           </div>
 

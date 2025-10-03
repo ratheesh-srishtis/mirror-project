@@ -47,7 +47,7 @@ const Header = () => {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/join-us");
+                  navigate("/share-with-us");
                 }}
               >
                 Share With Us
@@ -70,7 +70,7 @@ const Header = () => {
                   navigate("/blogs");
                 }}
               >
-                Blogs
+                Blog
               </a>
             </li>
           </ul>

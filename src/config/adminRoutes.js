@@ -23,7 +23,11 @@ const AdminRoutes = () => {
         />
         <Route
           path="/add-blogs"
-          element={<PrivateRoute>{/* <AddBlogs /> */}</PrivateRoute>}
+          element={
+            <PrivateRoute>
+              <AddBlogs />
+            </PrivateRoute>
+          }
         />
         <Route
           path="/manage-content"

@@ -20,7 +20,7 @@ function About() {
         </p>
       </section>
 
-      <section className="social-media">
+      {/* <section className="social-media">
         <h2>Our Social Media's</h2>
         <div className="icons">
           <a
@@ -44,15 +44,8 @@ function About() {
           >
             <FaYoutube />
           </a>
-          <a
-            href="https://x.com/youraccount"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaXTwitter />
-          </a>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
