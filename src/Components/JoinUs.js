@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../Css/components/joinus.css";
-import AddBlogs from "../admin/Components/AddBlogs";
 
 function JoinUs() {
   const [form, setForm] = useState({
@@ -8,8 +7,6 @@ function JoinUs() {
     country: "",
     comments: "",
   });
-
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -20,24 +17,9 @@ function JoinUs() {
     console.log(form);
   };
 
-  const openDialog = () => {
-    setIsDialogOpen(true);
-  };
-
-  const closeDialog = () => {
-    setIsDialogOpen(false);
-  };
-
   return (
     <div className="joinus__wrapper">
       <form className="joinus__form" onSubmit={handleSubmit}>
-        <button
-          type="button"
-          className="joinus__add-blogs-btn"
-          onClick={openDialog}
-        >
-          Add Blog
-        </button>
         {/* <div className="joinus__logo">
           <img src="/logo192.png" alt="Logo" />
         </div> */}
@@ -77,20 +59,6 @@ function JoinUs() {
           Join Us
         </button>
       </form>
-
-      {/* Dialog for Add Blogs */}
-      {isDialogOpen && (
-        <div className="joinus__dialog-overlay" onClick={closeDialog}>
-          <div className="joinus__dialog" onClick={(e) => e.stopPropagation()}>
-            <div className="joinus__dialog-header">
-              <button className="joinus__dialog-close" onClick={closeDialog}>
-                ×
-              </button>
-            </div>
-            <AddBlogs />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

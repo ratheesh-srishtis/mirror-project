@@ -412,7 +412,7 @@
 /* About Section Styles */
 .about-section {
   max-width: 900px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 1rem auto;
   padding: 3rem 2rem;
   background: linear-gradient(
     135deg,
@@ -437,7 +437,7 @@
   background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
 }
 
-.about-content {
+.about-content-home {
   position: relative;
   z-index: 2;
 }
@@ -499,7 +499,7 @@
 /* Mobile Responsiveness for About Section */
 @media (max-width: 768px) {
   .about-section {
-    margin: 0 1rem 3rem 1rem;
+    margin: 0 1rem 1rem 1rem;
     padding: 2rem 1.5rem;
     border-radius: 16px;
   }

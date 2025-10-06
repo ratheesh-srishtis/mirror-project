@@ -15,7 +15,6 @@ function AddBlogs() {
   return (
     <div className="addblogs-container">
       <form className="addblogs-form" onSubmit={handleSubmit}>
-        <h2 className="form-title">Add New Blog</h2>
         <div className="form-group">
           <label htmlFor="blog-title">Title</label>
           <input

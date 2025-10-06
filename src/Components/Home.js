@@ -55,13 +55,13 @@ function Home() {
     <div className="home-container">
       {/* About Us Section */}
       <div className="about-section">
-        <div className="about-content">
+        <div className="about-content-home">
           <p className="about-text">
-            The Mirror Project is a global youth cultural exchange built around
-            a simple idea: when we listen to each other, we see ourselves more
-            clearly.
+            <strong>The Mirror Project is</strong> a global youth cultural
+            exchange built around a simple idea: when we listen to each other,
+            we see ourselves more clearly.
           </p>
-          <p className="about-text">
+          {/* <p className="about-text">
             We asked teens and young adults from around the world about American
             teenagers, their own cultures, and the stereotypes they face. From
             Asia to Africa to South America, their answers reveal both the
@@ -74,7 +74,7 @@ function Home() {
             borders. As teens and young adults share their perspectives, they
             offer us a mirror that helps us see ourselves and each other in new
             ways.
-          </p>
+          </p> */}
           <p className="about-text">
             Share your story with us on social media or{" "}
             <span className="share-link">click on Share With Us</span> to join
@@ -84,7 +84,7 @@ function Home() {
       </div>
 
       <div className="continents-section">
-        <h2 className="section-title">Choose Your Destination</h2>
+        {/* <h2 className="section-title">Choose Your Destination</h2> */}
         <div className="continents-grid">
           {continents.map((continent, index) => (
             <div key={index} className={`continent-circle ${continent.theme}`}>

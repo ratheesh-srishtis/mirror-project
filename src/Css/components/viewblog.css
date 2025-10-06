@@ -1,0 +1,351 @@
+/* ViewBlog Component Styles */
+.viewblog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.viewblog-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Error State */
+.viewblog-error {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.viewblog-error h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.viewblog-error p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* Navigation */
+.viewblog-navigation {
+  margin-bottom: 30px;
+}
+
+.back-to-blogs-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.back-to-blogs-btn:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Blog Header */
+.viewblog-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.viewblog-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.viewblog-meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  color: #666;
+  font-size: 16px;
+  flex-wrap: wrap;
+}
+
+.viewblog-author,
+.viewblog-date {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.viewblog-author::before {
+  content: "👤";
+  margin-right: 8px;
+}
+
+.viewblog-date::before {
+  content: "📅";
+  margin-right: 8px;
+}
+
+/* Featured Image */
+.viewblog-image-container {
+  margin-bottom: 40px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  background: #f8f9fa;
+}
+
+.viewblog-featured-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.viewblog-featured-image:hover {
+  transform: scale(1.02);
+}
+
+/* Article Content */
+.viewblog-article {
+  margin-bottom: 50px;
+}
+
+.viewblog-content-body {
+  line-height: 1.8;
+  font-size: 18px;
+  color: #333;
+}
+
+.viewblog-paragraph {
+  margin-bottom: 25px;
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+  text-indent: 0;
+}
+
+/* Social Share Section */
+.viewblog-share {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 40px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.viewblog-share h3 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.viewblog-share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn.facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #166fe5 100%);
+}
+
+.share-btn.twitter {
+  background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%);
+}
+
+.share-btn.linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #006ba6 100%);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.share-btn.facebook:hover {
+  background: linear-gradient(135deg, #166fe5 0%, #1348c8 100%);
+}
+
+.share-btn.twitter:hover {
+  background: linear-gradient(135deg, #1a91da 0%, #1780c4 100%);
+}
+
+.share-btn.linkedin:hover {
+  background: linear-gradient(135deg, #006ba6 0%, #005885 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .viewblog-container {
+    padding: 15px;
+  }
+
+  .viewblog-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .viewblog-meta {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .viewblog-featured-image {
+    height: 250px;
+  }
+
+  .viewblog-content-body {
+    font-size: 16px;
+  }
+
+  .viewblog-paragraph {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .viewblog-share {
+    padding: 30px 20px;
+  }
+
+  .viewblog-share-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .share-btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .viewblog-container {
+    padding: 10px;
+  }
+
+  .viewblog-title {
+    font-size: 1.6rem;
+  }
+
+  .viewblog-featured-image {
+    height: 200px;
+  }
+
+  .viewblog-share {
+    padding: 20px 15px;
+  }
+
+  .viewblog-share h3 {
+    font-size: 20px;
+  }
+
+  .back-to-blogs-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .viewblog-content-body {
+    font-size: 15px;
+  }
+
+  .viewblog-paragraph {
+    font-size: 15px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .viewblog-navigation,
+  .viewblog-share {
+    display: none;
+  }
+
+  .viewblog-container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .viewblog-title,
+  .viewblog-paragraph {
+    color: black;
+  }
+
+  .viewblog-featured-image {
+    height: auto;
+    max-height: 300px;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .viewblog-featured-image,
+  .back-to-blogs-btn,
+  .share-btn {
+    transition: none;
+  }
+
+  .viewblog-featured-image:hover,
+  .back-to-blogs-btn:hover,
+  .share-btn:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .viewblog-container {
+    background: white;
+    color: black;
+  }
+
+  .viewblog-paragraph {
+    color: black;
+  }
+
+  .viewblog-meta {
+    color: #333;
+  }
+
+  .viewblog-share {
+    background: #f0f0f0;
+    border: 2px solid #333;
+  }
+}

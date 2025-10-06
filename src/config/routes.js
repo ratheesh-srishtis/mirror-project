@@ -9,6 +9,7 @@ import Home from "../Components/Home";
 import Videos from "../Components/Videos";
 import FAQ from "../Components/FAQ";
 import Contact from "../Components/Contact";
+import ViewBlog from "../Components/ViewBlog";
 
 const UserRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const UserRoutes = () => {
       <Route path="/voices" element={<Voices />} />
       <Route path="/videos" element={<Videos />} />
       <Route path="/videos/:region" element={<Videos />} />
+      <Route path="/view-blog/:name" element={<ViewBlog />} />
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/contact" element={<Contact />} />
