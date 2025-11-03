@@ -9,9 +9,8 @@ import AdminRoutes from "./config/adminRoutes";
 import AdminLogin from "./admin/auth/AdminLogin";
 
 function App() {
-  console.log("11.03.2025");
   return (
-    <Router basename="/mirror-project">
+    <Router>
       <Routes>
         {/* Admin login route - no layout */}
         <Route path="/admin-login" element={<AdminLogin />} />
