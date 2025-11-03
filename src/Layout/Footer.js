@@ -108,7 +108,7 @@ function Footer() {
         <div className="footer__copyright-section">
           <p>
             &copy; {new Date().getFullYear()} Mirror Project. All rights
-            reserved. <span className="footer__version">Version : 0.02 (Production Build Version : 0.01)</span>
+            reserved. <span className="footer__version">Prod Build : 0.01 </span>
           </p>
         </div>
       </div>
