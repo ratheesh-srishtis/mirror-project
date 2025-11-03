@@ -1,0 +1,71 @@
+.addblogs-container {
+  max-width: 700px;
+  margin: 0px auto;
+  padding: 24px;
+}
+
+.addblogs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+
+.form-input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+.ck-editor__editable_inline {
+  min-height: 200px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  padding: 12px;
+}
+
+.form-save-btn {
+  padding: 12px 0;
+  background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  transition: background 0.2s;
+}
+
+.form-save-btn:hover {
+  background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .addblogs-container {
+    margin: 0px auto;
+  }
+}

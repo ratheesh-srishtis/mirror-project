@@ -1,0 +1,407 @@
+/* Modern Responsive Form Design */
+.addvoices-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.addvoices-form-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.form-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 2rem;
+  border-radius: 20px 20px 0 0;
+}
+
+.addvoices-form {
+  padding: 2rem;
+}
+
+/* Form Sections */
+.form-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.section-header h3 {
+  color: #495057;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Form Rows for Responsive Layout */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #495057;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-group label.required::after {
+  content: " *";
+  color: #e74c3c;
+}
+
+/* Form Inputs */
+.form-input,
+.form-select {
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #fff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-input.error,
+.form-select.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 3rem;
+  appearance: none;
+}
+
+/* Error Messages */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* Add Video Button */
+.add-video-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.add-video-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.plus-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Videos Container */
+.videos-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+}
+
+/* Video Cards */
+.video-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.video-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+}
+
+.video-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.video-number {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.remove-video-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-video-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.video-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Create a horizontal layout for inputs and preview */
+.video-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.video-inputs {
+  flex: 1;
+}
+
+.video-preview-wrapper {
+  flex: 0 0 220px; /* Fixed width for preview area */
+}
+
+/* Video Preview */
+.video-preview {
+  margin-top: 0;
+}
+
+.video-preview label {
+  display: block;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.iframe-container {
+  position: relative;
+  width: 200px; /* Fixed small width */
+  height: 112px; /* Fixed small height (16:9 ratio) */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+}
+
+/* Responsive behavior - stack on smaller screens */
+@media (max-width: 768px) {
+  .video-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .video-preview-wrapper {
+    flex: none;
+    align-self: flex-start;
+  }
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+  text-align: center;
+}
+
+.form-save-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-save-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .addvoices-container {
+    padding: 1rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .addvoices-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .add-video-btn {
+    justify-content: center;
+  }
+
+  .video-card {
+    padding: 1rem;
+  }
+
+  .video-card-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .video-number {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .addvoices-container {
+    padding: 0.5rem;
+  }
+
+  .addvoices-form-wrapper {
+    border-radius: 16px;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+    padding: 1rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .addvoices-form {
+    padding: 1rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.75rem;
+  }
+
+  .video-card {
+    padding: 0.75rem;
+  }
+
+  .form-save-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Animation for smooth interactions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Focus visible for accessibility */
+.form-input:focus-visible,
+.form-select:focus-visible,
+.add-video-btn:focus-visible,
+.remove-video-btn:focus-visible,
+.form-save-btn:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
