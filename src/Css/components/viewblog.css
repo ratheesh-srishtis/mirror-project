@@ -349,3 +349,40 @@
     border: 2px solid #333;
   }
 }
+/* Control images within blog content */
+.viewblog-content-body img {
+  max-width: 400px !important;
+  max-height: 300px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 16px 0;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* For figure elements that contain images */
+.viewblog-content-body figure {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.viewblog-content-body figure img {
+  max-width: 400px !important;
+  max-height: 300px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Override any inline styles from CKEditor */
+.viewblog-content-body * {
+  max-width: 100% !important;
+}
+
+.viewblog-content-body img[style] {
+  max-width: 400px !important;
+  max-height: 300px !important;
+  width: auto !important;
+  height: auto !important;
+}

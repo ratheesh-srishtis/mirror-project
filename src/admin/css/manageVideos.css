@@ -183,3 +183,171 @@
   letter-spacing: 0.02em;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
+
+/* Video Actions */
+.video-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-video-btn,
+.delete-video-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.edit-video-btn:hover {
+  background: #e0f2fe;
+}
+
+.delete-video-btn:hover {
+  background: #fee2e2;
+}
+
+/* Edit Dialog Styles */
+.edit-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.edit-dialog {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-dialog-header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-dialog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.edit-dialog-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.edit-dialog-close:hover {
+  background: #f3f4f6;
+}
+
+.edit-dialog-form {
+  padding: 20px;
+}
+
+.edit-form-group {
+  margin-bottom: 20px;
+}
+
+.edit-form-group label {
+  display: block;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.edit-form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.edit-form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.edit-dialog-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.edit-cancel-btn,
+.edit-save-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-cancel-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.edit-cancel-btn:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.edit-save-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.edit-save-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.edit-cancel-btn:disabled,
+.edit-save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edit-dialog {
+    margin: 10px;
+    max-width: none;
+  }
+  
+  .edit-dialog-actions {
+    flex-direction: column;
+  }
+  
+  .edit-cancel-btn,
+  .edit-save-btn {
+    width: 100%;
+  }
+}

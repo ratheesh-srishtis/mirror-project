@@ -43,27 +43,24 @@ function ViewBlog() {
         {/* Blog Header */}
         <header className="viewblog-header">
           <h1 className="viewblog-title">{blog.title}</h1>
-          <div className="viewblog-meta">
-            <span className="viewblog-author">By {blog.author}</span>
-            <span className="viewblog-date">{blog.date}</span>
-          </div>
+        <div className="viewblog-meta">
+  <span className="viewblog-date">
+    {new Date(blog.createdAt).toLocaleDateString()}
+  </span>
+</div>
         </header>
 
-        {/* Featured Image */}
-        <div className="viewblog-image-container">
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="viewblog-featured-image"
-          />
-        </div>
+      
 
         {/* Blog Content */}
         <article className="viewblog-article">
-          <div className="viewblog-content-body">
-            <p className="viewblog-paragraph">{blog.content}</p>
-          </div>
-        </article>
+  <div className="viewblog-content-body">
+    <div 
+      className="viewblog-paragraph"
+      dangerouslySetInnerHTML={{ __html: blog.content }}
+    />
+  </div>
+</article>
 
         {/* Social Share Section */}
         {/* <div className="viewblog-share">

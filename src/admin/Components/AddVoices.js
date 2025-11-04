@@ -1,6 +1,7 @@
 import React, { useState , useEffect} from "react";
 import "../css/addvoices.css";
-import { getContinents, addVideos } from "../../config/api";
+import { addVideos } from "../../config/api";
+import { getContinents } from "../../config/publicApi";
 import { notifyError, notifySuccess } from "../../config/NotificationService";
 function AddVoices() {
   const [selectedContinent, setSelectedContinent] = useState("");

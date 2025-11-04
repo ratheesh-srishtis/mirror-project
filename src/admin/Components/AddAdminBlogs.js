@@ -4,12 +4,13 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "../css/addblogs.css";
 import { MyCustomUploadAdapterPlugin } from "../../config/MyUploadAdapter";
 import { notifyError, notifySuccess } from "../../config/NotificationService";
-import { addBlog } from "../../config/publicApi";
+import { addBlogByAdmin } from "../../config/api";
 import Swal from "sweetalert2";
-function AddBlogs({ onClose }) {
+import { useNavigate } from "react-router-dom";
+function AddAdminBlogs({ onClose }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+    const naviagate = useNavigate();
 
  const handleSubmit = async (e) => {
   e.preventDefault();
@@ -20,13 +21,13 @@ function AddBlogs({ onClose }) {
   }
 
   try {
-    const response = await addBlog(title, content);
+    const response = await addBlogByAdmin(title, content);
     
     // Show sweet alert popup
     Swal.fire({
       icon: 'success',
       title: 'Blog Submitted Successfully!',
-      text: 'Your blog has been submitted for review. Once admin approves your blog, it will be displayed on the blogs page.',
+      text: 'Your blog has been created.',
       confirmButtonText: 'OK',
       confirmButtonColor: '#3b82f6',
       timer: 9000,
@@ -35,9 +36,7 @@ function AddBlogs({ onClose }) {
     
     // Close the dialog after successful submission
     // You'll need to pass a closeDialog function as prop
-   if (onClose) {
-  onClose();
-}
+    naviagate('/admin/manage-blogs');
     
     console.log("Blog saved:", response.data);
   } catch (error) {
@@ -118,4 +117,4 @@ function AddBlogs({ onClose }) {
   );
 }
 
-export default AddBlogs;
+export default AddAdminBlogs;

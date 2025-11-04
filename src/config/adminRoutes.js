@@ -9,7 +9,8 @@ import ManageContent from "../admin/Components/ManageContent";
 import PrivateRoute from "./PrivateRoute";
 import Continents from "../admin/Components/Continents";
 import ManageVideos from "../admin/Components/ManageVideos";
-
+import ManageBlogs from "../admin/Components/ManageBlogs";
+import AddAdminBlogs from "../admin/Components/AddAdminBlogs";
 const AdminRoutes = () => {
   return (
     <AdminLayout>
@@ -55,7 +56,7 @@ const AdminRoutes = () => {
           path="/add-blogs"
           element={
             <PrivateRoute>
-              <AddBlogs />
+              <AddAdminBlogs />
             </PrivateRoute>
           }
         />
@@ -65,6 +66,15 @@ const AdminRoutes = () => {
             <PrivateRoute>
               {" "}
               <ManageContent />{" "}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manage-blogs"
+          element={
+            <PrivateRoute>
+              {" "}
+              <ManageBlogs />{" "}
             </PrivateRoute>
           }
         />

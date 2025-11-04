@@ -4,7 +4,8 @@ import AddContinents from "./AddContinents";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Swal from "sweetalert2";
-import { addContinent, getContinents, updateContinent, deleteContinent } from "../../config/api";
+import { addContinent, updateContinent, deleteContinent } from "../../config/api";
+import { getContinents } from "../../config/publicApi";
 import { notifySuccess, notifyError } from "../../config/NotificationService";
 function Continents() {
   const [dialogOpen, setDialogOpen] = React.useState(false);

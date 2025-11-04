@@ -1,19 +1,40 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  baseURL:  "http://localhost:5000/api",
+  // baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
 });
 
-// Automatically attach token to every request if available
+// ✅ Custom setup to use context outside React
+let loaderSetter = null;
+export const setLoaderSetter = (fn) => (loaderSetter = fn);
+
+// REQUEST Interceptor
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("adminToken");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    if (loaderSetter) loaderSetter(true); // show loader
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    if (loaderSetter) loaderSetter(false);
+    return Promise.reject(error);
+  }
+);
+
+// RESPONSE Interceptor
+api.interceptors.response.use(
+  (response) => {
+    if (loaderSetter) loaderSetter(false); // hide loader
+    return response;
+  },
+  (error) => {
+    if (loaderSetter) loaderSetter(false);
+    return Promise.reject(error);
+  }
 );
 
 // Add continent API
@@ -21,10 +42,6 @@ export const addContinent = async (name) => {
   return api.post("/continents", { name });
 };
 
-// Get continents API
-export const getContinents = async () => {
-  return api.get("/continents");
-};
 
 
 // Update continent API
@@ -42,10 +59,6 @@ export const addVideos = async (continentId, videos) => {
   return api.post("/videos", { continentId, videos });
 };
 
-// Get videos by continent API
-export const getVideosByContinent = async (continentId) => {
-  return api.get(`/videos/${continentId}`);
-};
 
 // Delete video by ID API
 export const deleteVideo = async (videoId) => {
@@ -53,6 +66,46 @@ export const deleteVideo = async (videoId) => {
 };
 
 
+
+
+// Edit blog API
+export const editBlog = async (id, title, content) => {
+  return api.put(`/blogs/${id}`, { title, content });
+};
+
+// Delete blog API
+export const deleteBlog = async (id) => {
+  return api.delete(`/blogs/${id}`);
+};
+
+
+// Approve blog API
+export const approveBlog = async (id) => {
+  return api.put(`/blogs/${id}/approve`);
+};
+
+// Reject blog API
+export const rejectBlog = async (id) => {
+  return api.put(`/blogs/${id}/reject`);
+};
+
+
+// Add blog by admin API (auto-approved)
+export const addBlogByAdmin = async (title, content) => {
+  return api.post("/blogs/admin", { title, content });
+};
+
+// Edit video API
+export const editVideo = async (videoId, title, youtubeUrl) => {
+  return api.put(`/videos/${videoId}`, { title, youtubeUrl });
+};
+
+
+
+// Update home content API
+export const updateHomeContent = async (aboutText1, aboutText2, strongText, linkText) => {
+  return api.put("/home-content", { aboutText1, aboutText2, strongText, linkText });
+};
 // Add more APIs here as needed...
 
 export default api;

@@ -81,7 +81,7 @@
 }
 
 .main-video-title {
-  font-size: 2rem;
+  font-size: 16px;
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 12px 0;
@@ -444,7 +444,7 @@
   }
 
   .main-video-title {
-    font-size: 1.8rem;
+    font-size: 16px;
   }
 }
 
@@ -512,7 +512,7 @@
   }
 
   .main-video-title {
-    font-size: 1.6rem;
+    font-size:16px;
   }
 
   .main-video-description {
@@ -635,7 +635,7 @@
   }
 
   .main-video-title {
-    font-size: 1.4rem;
+    font-size: 14px;
   }
 
   .main-video-description {
@@ -696,7 +696,7 @@
   }
 
   .main-video-title {
-    font-size: 1.2rem;
+    font-size: 12px;
   }
 }
 
@@ -720,7 +720,7 @@
   }
 
   .main-video-title {
-    font-size: 1.2rem;
+    font-size: 12px;
   }
 
   .main-video-date {

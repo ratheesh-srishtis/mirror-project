@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../Css/components/videos.css";
-
+import { useLocation } from "react-router-dom";
+import { getVideosByContinent ,getAllVideos} from "../config/publicApi";
 function Videos() {
   const { region } = useParams();
   const [selectedRegion, setSelectedRegion] = useState(null);
@@ -10,148 +11,38 @@ function Videos() {
   const [videosPerSlide, setVideosPerSlide] = useState(4);
   const carouselRef = useRef(null);
 
-  // Sample video data organized by continent
-  const videosByContinent = {
-    Asia: [
-      {
-        id: 1,
-        url: "https://youtube.com/shorts/jdklsqqf9Fw?si=mBXPY0GCrgjjQZi0",
-        title: "Discovering Asia #1",
-        description: "Beautiful landscapes of Asia",
-        postedDate: "2025-09-01",
-      },
-      {
-        id: 2,
-        url: "https://youtu.be/bmqUxO8hBTs?si=OGVJ2ncwu9RhAE9m",
-        title: "Asian Culture #2",
-        description: "Traditional Asian customs",
-        postedDate: "2025-09-02",
-      },
-      {
-        id: 3,
-        url: "https://youtu.be/8g-JWMhUJdE?si=2XndkGBbCifrtiey",
-        title: "Asian Adventures #3",
-        description: "Exploring hidden gems in Asia",
-        postedDate: "2025-09-03",
-      },
-      {
-        id: 4,
-        url: "https://youtu.be/gXId9M2w5LU?si=si4ePcvrkQon2Mwt",
-        title: "Asian Cuisine #4",
-        description: "Taste of authentic Asian food",
-        postedDate: "2025-09-04",
-      },
-      {
-        id: 5,
-        url: "https://youtu.be/qSO_MzezQNQ?si=SECxvv3bWB3tE2xD",
-        title: "Asian Markets #5",
-        description: "Bustling markets across Asia",
-        postedDate: "2025-09-05",
-      },
-      {
-        id: 6,
-        url: "https://youtu.be/qSO_MzezQNQ?si=SECxvv3bWB3tE2xD",
-        title: "Asian Markets #6",
-        description: "Bustling markets across Asia",
-        postedDate: "2025-09-05",
-      },
-      {
-        id: 7,
-        url: "https://youtu.be/0siE31sqz0Q?si=xs_p8uh_63P8lVsw",
-        title: "Asian Markets #7",
-        description: "Bustling markets across Asia",
-        postedDate: "2025-09-05",
-      },
-      {
-        id: 8,
-        url: "https://youtu.be/8zviPDgCipc?si=RDLl51ToUbRHjCx1",
-        title: "Asian Markets #8",
-        description: "Bustling markets across Asia",
-        postedDate: "2025-09-05",
-      },
-      {
-        id: 9,
-        url: "https://youtu.be/qU1FgDG16U4?si=OTzD6K-eJM6dvLOY",
-        title: "Asian Markets #9",
-        description: "Bustling markets across Asia",
-        postedDate: "2025-09-05",
-      },
-    ],
-    Africa: [
-      {
-        id: 6,
-        url: "https://youtu.be/qSO_MzezQNQ?si=SECxvv3bWB3tE2xD",
-        title: "African Wildlife #1",
-        description: "Safari adventures in Africa",
-        postedDate: "2025-09-05",
-      },
-      {
-        id: 7,
-        url: "https://youtu.be/0siE31sqz0Q?si=xs_p8uh_63P8lVsw",
-        title: "African Culture #2",
-        description: "Rich traditions of Africa",
-        postedDate: "2025-09-06",
-      },
-      {
-        id: 8,
-        url: "https://youtu.be/8zviPDgCipc?si=RDLl51ToUbRHjCx1",
-        title: "African Landscapes #3",
-        description: "Breathtaking views of Africa",
-        postedDate: "2025-09-07",
-      },
-    ],
-    Europe: [
-      {
-        id: 9,
-        url: "https://youtu.be/qU1FgDG16U4?si=OTzD6K-eJM6dvLOY",
-        title: "European Cities #1",
-        description: "Historic cities of Europe",
-        postedDate: "2025-09-08",
-      },
-      {
-        id: 10,
-        url: "https://youtu.be/20o79uGsSwA?si=UmDVvVF4mN4nd9to",
-        title: "European Architecture #2",
-        description: "Stunning European buildings",
-        postedDate: "2025-09-09",
-      },
-    ],
-    "North America": [
-      {
-        id: 11,
-        url: "https://youtu.be/osmqn1A45rU?si=zNWjVMvP0E1E6Knw",
-        title: "North American Nature #1",
-        description: "Natural wonders of North America",
-        postedDate: "2025-09-10",
-      },
-    ],
-    "South America": [
-      {
-        id: 12,
-        url: "https://youtu.be/mcpJilEU1e0?si=9wzeQh1UIc6PiaVx",
-        title: "South American Culture #1",
-        description: "Vibrant culture of South America",
-        postedDate: "2025-09-11",
-      },
-    ],
-    Australia: [
-      {
-        id: 13,
-        url: "https://youtu.be/bmqUxO8hBTs?si=OGVJ2ncwu9RhAE9m",
-        title: "Australian Wildlife #1",
-        description: "Unique animals of Australia",
-        postedDate: "2025-09-12",
-      },
-    ],
-  };
+  const location = useLocation();
+const [videos, setVideos] = useState([]);
+const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+  const fetchVideos = async () => {
+  const continentId = location.state?.continentId;
+  setLoading(true);
+  try {
+    let response;
+    if (continentId) {
+      response = await getVideosByContinent(continentId);
+    } else {
+      response = await getAllVideos();
+    }
+    setVideos(response.data);
+  } catch (error) {
+    console.error("Failed to fetch videos:", error);
+    setVideos([]);
+  } finally {
+    setLoading(false);
+  }
+};
+
+  fetchVideos();
+}, []);
+
 
   // Get all videos if no region is selected, or region-specific videos
-  const getCurrentVideos = () => {
-    if (selectedRegion && videosByContinent[selectedRegion]) {
-      return videosByContinent[selectedRegion];
-    }
-    return Object.values(videosByContinent).flat();
-  };
+ const getCurrentVideos = () => {
+  return videos;
+};
 
   const currentVideos = getCurrentVideos();
 
@@ -188,33 +79,39 @@ function Videos() {
     }
   }, [region]);
 
-  // Helper to convert YouTube URL to embed format
-  const getEmbedUrl = (url) => {
-    // Common YouTube embed parameters for clean view
-    const params = "?rel=0&modestbranding=1&showinfo=0&controls=1";
-    // Handle Shorts URLs
-    const shortsMatch = url.match(/youtube\.com\/shorts\/([\w-]{11})/);
-    if (shortsMatch) {
-      return `https://www.youtube.com/embed/${shortsMatch[1]}${params}`;
-    }
-    // Handle regular YouTube URLs
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
-    return match ? `https://www.youtube.com/embed/${match[1]}${params}` : url;
-  };
+// Helper to convert YouTube URL to embed format
+const getEmbedUrl = (url) => {
+  // Check if url exists
+  if (!url) return "";
+  
+  // Common YouTube embed parameters for clean view
+  const params = "?rel=0&modestbranding=1&showinfo=0&controls=1";
+  // Handle Shorts URLs
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([\w-]{11})/);
+  if (shortsMatch) {
+    return `https://www.youtube.com/embed/${shortsMatch[1]}${params}`;
+  }
+  // Handle regular YouTube URLs
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
+  return match ? `https://www.youtube.com/embed/${match[1]}${params}` : url;
+};
 
-  // Get YouTube thumbnail
-  const getThumbnailUrl = (url) => {
-    // Handle Shorts URLs
-    const shortsMatch = url.match(/youtube\.com\/shorts\/([\w-]{11})/);
-    if (shortsMatch) {
-      return `https://img.youtube.com/vi/${shortsMatch[1]}/maxresdefault.jpg`;
-    }
-    // Handle regular YouTube URLs
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
-    return match
-      ? `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`
-      : "";
-  };
+// Get YouTube thumbnail
+const getThumbnailUrl = (url) => {
+  // Check if url exists
+  if (!url) return "";
+  
+  // Handle Shorts URLs
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([\w-]{11})/);
+  if (shortsMatch) {
+    return `https://img.youtube.com/vi/${shortsMatch[1]}/maxresdefault.jpg`;
+  }
+  // Handle regular YouTube URLs
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
+  return match
+    ? `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`
+    : "";
+};
 
   // Handle video selection
   const handleVideoSelect = (index) => {
@@ -262,8 +159,8 @@ function Videos() {
           <div className="main-video-section">
             <div className="main-video-player">
               <iframe
-                src={getEmbedUrl(currentVideos[currentVideoIndex]?.url)}
-                title={currentVideos[currentVideoIndex]?.title}
+               src={getEmbedUrl(currentVideos[currentVideoIndex]?.youtubeUrl)} 
+               title={currentVideos[currentVideoIndex]?.title}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -271,14 +168,14 @@ function Videos() {
             </div>
             <div className="main-video-info">
               <h2 className="main-video-title">
-                {currentVideos[currentVideoIndex]?.title}
+             {currentVideos[currentVideoIndex]?.title}
               </h2>
               <div className="main-video-meta">
                 <p className="main-video-description">
                   {currentVideos[currentVideoIndex]?.description}
                 </p>
                 <span className="main-video-date">
-                  {currentVideos[currentVideoIndex]?.postedDate}
+                    {new Date(currentVideos[currentVideoIndex]?.createdAt).toLocaleDateString()} 
                 </span>
               </div>
             </div>
@@ -323,7 +220,7 @@ function Videos() {
 
                     return (
                       <div
-                        key={video.id}
+                        key={video._id}
                         className={`carousel-video-item ${
                           isActive ? "active" : ""
                         }`}
@@ -331,7 +228,7 @@ function Videos() {
                       >
                         <div className="carousel-thumbnail">
                           <img
-                            src={getThumbnailUrl(video.url)}
+                            src={getThumbnailUrl(video.youtubeUrl)}
                             alt={video.title}
                             loading="lazy"
                           />
@@ -345,7 +242,7 @@ function Videos() {
                             {video.title}
                           </h4>
                           <span className="carousel-video-date">
-                            {video.postedDate}
+                           {new Date(video.createdAt).toLocaleDateString()} 
                           </span>
                         </div>
                       </div>

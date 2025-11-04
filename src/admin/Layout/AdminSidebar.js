@@ -49,6 +49,8 @@ const AdminSidebar = () => {
   path: "/admin/manage-videos",
   onClick: () => navigate("/admin/manage-videos"),
 },
+
+
     {
       id: "add-videos",
       label: "Add Videos",
@@ -56,6 +58,13 @@ const AdminSidebar = () => {
       path: "/admin/add-videos",
       onClick: () => navigate("/admin/add-videos"),
     },
+      {
+  id: "manage-blogs",
+  label: "Manage Blogs",
+  icon: <ArticleIcon fontSize="medium" />, // You can use a more suitable icon, e.g. VideoLibraryIcon
+  path: "/admin/manage-blogs",
+  onClick: () => navigate("/admin/manage-blogs"),
+},
     {
       id: "add-blogs",
       label: "Add Blogs",
@@ -63,6 +72,9 @@ const AdminSidebar = () => {
       path: "/admin/add-blogs",
       onClick: () => navigate("/admin/add-blogs"),
     },
+    
+
+
     {
       id: "manage-content",
       label: "Manage Content",

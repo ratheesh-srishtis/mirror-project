@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { getContinents, getVideosByContinent,deleteVideo } from "../../config/api";
+import { deleteVideo } from "../../config/api";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "../css/manageVideos.css";
 import Swal from "sweetalert2";
-
+import { getContinents, getVideosByContinent } from "../../config/publicApi";
+import EditIcon from '@mui/icons-material/Edit';
+import { notifyError, notifySuccess } from "../../config/NotificationService";
+import { editVideo } from "../../config/api";
 function ManageVideos() {
   const [continents, setContinents] = useState([]);
   const [selectedContinent, setSelectedContinent] = useState("");
@@ -74,8 +77,63 @@ function ManageVideos() {
   }
 };
 
+
+
+// Add these state variables
+const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+const [editingVideo, setEditingVideo] = useState(null);
+const [editTitle, setEditTitle] = useState("");
+const [editYoutubeUrl, setEditYoutubeUrl] = useState("");
+const [editLoading, setEditLoading] = useState(false);
+
+// Add these functions
+const openEditDialog = (video) => {
+  setEditingVideo(video);
+  setEditTitle(video.title);
+  setEditYoutubeUrl(video.youtubeUrl);
+  setIsEditDialogOpen(true);
+};
+
+const closeEditDialog = () => {
+  setIsEditDialogOpen(false);
+  setEditingVideo(null);
+  setEditTitle("");
+  setEditYoutubeUrl("");
+};
+
+const handleEditVideo = async (e) => {
+  e.preventDefault();
+  
+  if (!editTitle.trim() || !editYoutubeUrl.trim()) {
+    notifyError("Title and YouTube URL are required");
+    return;
+  }
+
+  try {
+    setEditLoading(true);
+    await editVideo(editingVideo._id, editTitle, editYoutubeUrl);
+    notifySuccess("Video updated successfully!");
+    
+    // Refresh the video list
+    const response = await getVideosByContinent(selectedContinent);
+    setVideos(response.data);
+    
+    closeEditDialog();
+  } catch (error) {
+    notifyError(
+      error.response?.data?.message || 
+      error.message || 
+      "Failed to update video"
+    );
+    console.error("Error updating video:", error);
+  } finally {
+    setEditLoading(false);
+  }
+};
+
   return (
-    <div className="manage-videos-container">
+    <>
+        <div className="manage-videos-container">
       <h2>
         <VideoLibraryIcon /> Manage Videos
       </h2>
@@ -111,12 +169,18 @@ function ManageVideos() {
                 ></iframe>
               </div>
               <div className="mv-title">{video.title}</div>
-             
                <div className="mv-meta-row">
       <span className="mv-date">
        {new Date(video.createdAt).toLocaleDateString()}
       </span>
       <div className="mv-actions">
+        <button
+    className="edit-video-btn"
+    onClick={() => openEditDialog(video)}
+    title="Edit Video"
+  >
+    <EditIcon />
+  </button>
         <button
           className="mv-delete-btn"
           onClick={() => handleDeleteVideo(video._id)}
@@ -132,6 +196,67 @@ function ManageVideos() {
         )}
       </div>
     </div>
+
+    {/* Edit Video Dialog */}
+{isEditDialogOpen && editingVideo && (
+  <div className="edit-dialog-overlay" onClick={closeEditDialog}>
+    <div className="edit-dialog" onClick={(e) => e.stopPropagation()}>
+      <div className="edit-dialog-header">
+        <h2 className="edit-dialog-title">Edit Video</h2>
+        <button className="edit-dialog-close" onClick={closeEditDialog}>
+          ×
+        </button>
+      </div>
+      
+      <form className="edit-dialog-form" onSubmit={handleEditVideo}>
+        <div className="edit-form-group">
+          <label htmlFor="edit-title">Video Title</label>
+          <input
+            type="text"
+            id="edit-title"
+            value={editTitle}
+            onChange={(e) => setEditTitle(e.target.value)}
+            className="edit-form-input"
+            placeholder="Enter video title"
+            required
+          />
+        </div>
+        
+        <div className="edit-form-group">
+          <label htmlFor="edit-youtube-url">YouTube URL</label>
+          <input
+            type="url"
+            id="edit-youtube-url"
+            value={editYoutubeUrl}
+            onChange={(e) => setEditYoutubeUrl(e.target.value)}
+            className="edit-form-input"
+            placeholder="https://www.youtube.com/watch?v=..."
+            required
+          />
+        </div>
+        
+        <div className="edit-dialog-actions">
+          <button
+            type="button"
+            className="edit-cancel-btn"
+            onClick={closeEditDialog}
+            disabled={editLoading}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="edit-save-btn"
+            disabled={editLoading}
+          >
+            {editLoading ? 'Updating...' : 'Update Video'}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}</>
+
   );
 }
 
