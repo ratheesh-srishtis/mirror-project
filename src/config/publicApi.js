@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const publicApi = axios.create({
-  baseURL: "http://localhost:5000/api",
-  // baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/api",
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
 });
 
 // ✅ Custom setup to use context outside React
@@ -51,11 +51,11 @@ export const getAllVideos = async () => {
 // Upload image to Cloudinary API (public)
 export const uploadImage = async (imageFile) => {
   const formData = new FormData();
-  formData.append('image', imageFile);
-  
+  formData.append("image", imageFile);
+
   return publicApi.post("/upload/image", formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
 };
@@ -69,7 +69,6 @@ export const getAllBlogs = async () => {
 export const getBlogById = async (id) => {
   return publicApi.get(`/blogs/${id}`);
 };
-
 
 // Add blog API
 // Add blog API (public users - pending approval)

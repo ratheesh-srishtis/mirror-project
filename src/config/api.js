@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:  "http://localhost:5000/api",
-  // baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  // baseURL:  "http://localhost:5000/api",
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
 });
 
 // ✅ Custom setup to use context outside React
@@ -42,8 +42,6 @@ export const addContinent = async (name) => {
   return api.post("/continents", { name });
 };
 
-
-
 // Update continent API
 export const updateContinent = async (id, name) => {
   return api.put(`/continents/${id}`, { name });
@@ -59,14 +57,10 @@ export const addVideos = async (continentId, videos) => {
   return api.post("/videos", { continentId, videos });
 };
 
-
 // Delete video by ID API
 export const deleteVideo = async (videoId) => {
   return api.delete(`/videos/${videoId}`);
 };
-
-
-
 
 // Edit blog API
 export const editBlog = async (id, title, content) => {
@@ -78,7 +72,6 @@ export const deleteBlog = async (id) => {
   return api.delete(`/blogs/${id}`);
 };
 
-
 // Approve blog API
 export const approveBlog = async (id) => {
   return api.put(`/blogs/${id}/approve`);
@@ -88,7 +81,6 @@ export const approveBlog = async (id) => {
 export const rejectBlog = async (id) => {
   return api.put(`/blogs/${id}/reject`);
 };
-
 
 // Add blog by admin API (auto-approved)
 export const addBlogByAdmin = async (title, content) => {
@@ -100,11 +92,19 @@ export const editVideo = async (videoId, title, youtubeUrl) => {
   return api.put(`/videos/${videoId}`, { title, youtubeUrl });
 };
 
-
-
 // Update home content API
-export const updateHomeContent = async (aboutText1, aboutText2, strongText, linkText) => {
-  return api.put("/home-content", { aboutText1, aboutText2, strongText, linkText });
+export const updateHomeContent = async (
+  aboutText1,
+  aboutText2,
+  strongText,
+  linkText
+) => {
+  return api.put("/home-content", {
+    aboutText1,
+    aboutText2,
+    strongText,
+    linkText,
+  });
 };
 // Add more APIs here as needed...
 
