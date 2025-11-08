@@ -20,7 +20,7 @@ const AdminLogin = () => {
       const { token } = response.data;
 
       localStorage.setItem("adminToken", token); // Save admin token
-      navigate("/admin/dashboard"); // Redirect to admin dashboard
+      navigate("/admin/continents"); // Redirect to admin dashboard
     } catch (err) {
       setError("Invalid username or password");
     }

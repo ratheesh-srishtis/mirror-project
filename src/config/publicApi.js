@@ -86,4 +86,8 @@ export const getHomeContent = async () => {
   return publicApi.get("/home-content");
 };
 
+export const getAllFAQs = async () => {
+  return publicApi.get("/faqs");
+};
+
 export default publicApi;

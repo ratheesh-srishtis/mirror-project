@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL:  "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/api",
   baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
 });
 
@@ -90,6 +90,33 @@ export const addBlogByAdmin = async (title, content) => {
 // Edit video API
 export const editVideo = async (videoId, title, youtubeUrl) => {
   return api.put(`/videos/${videoId}`, { title, youtubeUrl });
+};
+
+// Add these FAQ API functions to your existing api.js file
+
+// Search FAQs (Public)
+export const searchFAQs = async (query, page = 1, limit = 10) => {
+  return api.get(`/faqs/search?q=${query}&page=${page}&limit=${limit}`);
+};
+
+// Add FAQ (Protected - Admin only)
+export const addFAQ = async (question, answer) => {
+  return api.post("/faqs", { question, answer });
+};
+
+// Update FAQ (Protected - Admin only)
+export const updateFAQ = async (id, question, answer) => {
+  return api.put(`/faqs/${id}`, { question, answer });
+};
+
+// Delete FAQ (Protected - Admin only)
+export const deleteFAQ = async (id) => {
+  return api.delete(`/faqs/${id}`);
+};
+
+// Delete multiple FAQs (Protected - Admin only)
+export const deleteMultipleFAQs = async (ids) => {
+  return api.delete("/faqs", { data: { ids } });
 };
 
 // Update home content API

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../admin/css/sidebar.css";
 import devConfig from "../../config/devConfig";
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PublicIcon from '@mui/icons-material/Public';
-import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-import ArticleIcon from '@mui/icons-material/Article';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PublicIcon from "@mui/icons-material/Public";
+import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
+import ArticleIcon from "@mui/icons-material/Article";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const AdminSidebar = () => {
   const Logo = require("../../assets/images/mirrorLogo.png");
@@ -28,13 +28,13 @@ const AdminSidebar = () => {
   };
 
   const menuItems = [
-    {
-      id: "dashboard",
-      label: "Dashboard",
-      icon: <DashboardIcon fontSize="medium" />,
-      path: "/admin/dashboard",
-      onClick: () => navigate("/admin/dashboard"),
-    },
+    // {
+    //   id: "dashboard",
+    //   label: "Dashboard",
+    //   icon: <DashboardIcon fontSize="medium" />,
+    //   path: "/admin/dashboard",
+    //   onClick: () => navigate("/admin/dashboard"),
+    // },
     {
       id: "continents",
       label: "Continents",
@@ -43,13 +43,12 @@ const AdminSidebar = () => {
       onClick: () => navigate("/admin/continents"),
     },
     {
-  id: "manage-videos",
-  label: "Manage Videos",
-  icon: <ArticleIcon fontSize="medium" />, // You can use a more suitable icon, e.g. VideoLibraryIcon
-  path: "/admin/manage-videos",
-  onClick: () => navigate("/admin/manage-videos"),
-},
-
+      id: "manage-videos",
+      label: "Manage Videos",
+      icon: <ArticleIcon fontSize="medium" />, // You can use a more suitable icon, e.g. VideoLibraryIcon
+      path: "/admin/manage-videos",
+      onClick: () => navigate("/admin/manage-videos"),
+    },
 
     {
       id: "add-videos",
@@ -58,13 +57,13 @@ const AdminSidebar = () => {
       path: "/admin/add-videos",
       onClick: () => navigate("/admin/add-videos"),
     },
-      {
-  id: "manage-blogs",
-  label: "Manage Blogs",
-  icon: <ArticleIcon fontSize="medium" />, // You can use a more suitable icon, e.g. VideoLibraryIcon
-  path: "/admin/manage-blogs",
-  onClick: () => navigate("/admin/manage-blogs"),
-},
+    {
+      id: "manage-blogs",
+      label: "Manage Blogs",
+      icon: <ArticleIcon fontSize="medium" />, // You can use a more suitable icon, e.g. VideoLibraryIcon
+      path: "/admin/manage-blogs",
+      onClick: () => navigate("/admin/manage-blogs"),
+    },
     {
       id: "add-blogs",
       label: "Add Blogs",
@@ -72,8 +71,6 @@ const AdminSidebar = () => {
       path: "/admin/add-blogs",
       onClick: () => navigate("/admin/add-blogs"),
     },
-    
-
 
     {
       id: "manage-content",
@@ -81,6 +78,13 @@ const AdminSidebar = () => {
       icon: <SettingsIcon fontSize="medium" />,
       path: "/admin/manage-content",
       onClick: () => navigate("/admin/manage-content"),
+    },
+    {
+      id: "manage-faqs",
+      label: "Manage FAQs",
+      icon: <SettingsIcon fontSize="medium" />,
+      path: "/admin/manage-faqs",
+      onClick: () => navigate("/admin/manage-faqs"),
     },
   ];
 
@@ -166,7 +170,9 @@ const AdminSidebar = () => {
             onClick={handleLogout}
             aria-label="Logout"
           >
-            <span className="sidebar-menu-icon"><LogoutIcon fontSize="medium" /></span>
+            <span className="sidebar-menu-icon">
+              <LogoutIcon fontSize="medium" />
+            </span>
             <span className="sidebar-menu-text">Logout</span>
           </button>
         </div>

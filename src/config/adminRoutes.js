@@ -11,6 +11,7 @@ import Continents from "../admin/Components/Continents";
 import ManageVideos from "../admin/Components/ManageVideos";
 import ManageBlogs from "../admin/Components/ManageBlogs";
 import AddAdminBlogs from "../admin/Components/AddAdminBlogs";
+import ManageFaqs from "../admin/Components/ManageFaqs";
 const AdminRoutes = () => {
   return (
     <AdminLayout>
@@ -33,7 +34,7 @@ const AdminRoutes = () => {
               <Continents />{" "}
             </PrivateRoute>
           }
-        /> 
+        />
         <Route
           path="/manage-videos"
           element={
@@ -42,7 +43,7 @@ const AdminRoutes = () => {
               <ManageVideos />{" "}
             </PrivateRoute>
           }
-        /> 
+        />
         <Route
           path="/add-videos"
           element={
@@ -75,6 +76,15 @@ const AdminRoutes = () => {
             <PrivateRoute>
               {" "}
               <ManageBlogs />{" "}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manage-faqs"
+          element={
+            <PrivateRoute>
+              {" "}
+              <ManageFaqs />{" "}
             </PrivateRoute>
           }
         />
